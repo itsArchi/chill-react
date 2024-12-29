@@ -1,7 +1,8 @@
 import Button from "../Components/Elements/Button/Button";
 import Logo from "../Components/Elements/Logo/Logo";
 import FormLogin from "../Components/Fragments/FormLogin";
-import TitleWelcome from "../Components/Fragments/TitleWelcome";
+// import TitleWelcome from "../Components/Fragments/TitleWelcome";
+import WelcomeText from "../Components/Elements/WelcomeText/WelcomeText";
 
 const LoginPage = () => {
   return (
@@ -9,7 +10,7 @@ const LoginPage = () => {
       <div className="absolute inset-0 bg-black opacity-30"></div>
       <div className="relative flex justify-center items-center flex-col w-[90%] sm:w-[80%] md:w-[70%] lg:w-[529px] h-auto md:h-[663px] bg-[#181A1CD6] rounded-2xl p-6 md:p-10 gap-4 sm:gap-6">
         <Logo />
-        <TitleWelcome />
+        <WelcomeText title="Masuk" text="Selamat datang kembali" />
         <FormLogin />
         <div className="flex flex-col items-center w-full gap-3 sm:gap-2">
           <Button variant="bg-[#3D4142]"> Masuk </Button>
