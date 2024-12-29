@@ -1,9 +1,11 @@
-import LoginPage from "./Pages/Login";
+// import LoginPage from "./Pages/Login";
+import RegisterPage from "./Pages/register";
 
 function App() {
   return (
     <div className="flex justify-center">
-      <LoginPage></LoginPage>
+      {/* <LoginPage /> */}
+      <RegisterPage />
     </div>
   );
 }
