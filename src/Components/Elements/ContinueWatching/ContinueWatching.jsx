@@ -2,7 +2,6 @@
 const ContinueWatching = (props) => {
   const { titleFilm, rating, image } = props;
   return (
-    <div className="w-full h-full">
       <div className="relative w-[302px] h-[162px] gap-2.5">
         <img
           className="rounded-lg w-[302px] h-[162px] object-cover"
@@ -28,7 +27,6 @@ const ContinueWatching = (props) => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

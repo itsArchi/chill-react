@@ -1,7 +1,9 @@
 import Navbar from "../Components/Fragments/Navbar";
 import ComponentHero from "../Components/Fragments/ComponentHero";
 import ContinueWatchingFilmLayout from "../Components/Layout/ContinueWatchingFilmLayout";
-import FilmContainer from "../Components/Fragments/FilmContainer";
+import TopRatingLayout from "../Components/Layout/TopRatingLayout";
+import TrendingLayout from "../Components/Layout/TrendingLayout";
+import NewReleaseLayout from "../Components/Layout/NewReleaseLayout";
 
 const TestPage = () => {
   return (
@@ -9,7 +11,9 @@ const TestPage = () => {
       <Navbar />
       <ComponentHero />
       <ContinueWatchingFilmLayout />
-      <FilmContainer />
+      <TopRatingLayout />
+      <TrendingLayout />
+      <NewReleaseLayout />
     </div>
   );
 };
