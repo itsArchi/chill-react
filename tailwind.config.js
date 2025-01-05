@@ -6,12 +6,16 @@ export default {
       fontFamily: {
         londrina: ["Londrina Solid", "sans-serif"],
         lato: ["Lato", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
       },
       backgroundImage: {
         "bg-login": "url('/bg-login.jpg')",
         "bg-register": "url('/bg-register.jpg')",
         "bg-main": "url('/bg-main.jpg')",
       },
+      colors: {
+        grey: "#C1C2C4",
+      }
     },
   },
   plugins: [],

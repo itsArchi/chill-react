@@ -6,7 +6,7 @@ import TrendingLayout from "../Components/Layout/TrendingLayout";
 import NewReleaseLayout from "../Components/Layout/NewReleaseLayout";
 import Footer from "../Components/Fragments/Footer";
 
-const TestPage = () => {
+const Home = () => {
   return (
     <div className="bg-[#181A1C]">
       <Navbar />
@@ -20,4 +20,4 @@ const TestPage = () => {
   );
 };
 
-export default TestPage;
+export default Home;

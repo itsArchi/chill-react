@@ -6,11 +6,12 @@ import LoginPage from "./Pages/Login";
 import RegisterPage from "./Pages/register";
 import ErrorPage from "./Pages/error";
 import TestPage from "./Pages/test";
+import Home from "./Pages/home";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <h1>Anjay Bisa Gitu Bang</h1>,
+    element: <Home />,
     errorElement: <ErrorPage />,
   },
   {
