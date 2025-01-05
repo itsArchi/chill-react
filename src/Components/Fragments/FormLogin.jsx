@@ -20,6 +20,7 @@ const FormLogin = () => {
         />
         <Forgot 
           text="Belum punya akun?"
+          goto="/register"
           link1="Daftar"
           link2="Lupa kata sandi?"/>
       </form>

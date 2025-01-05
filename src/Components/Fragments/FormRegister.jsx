@@ -27,6 +27,7 @@ const FormRegister = () => {
         />
         <Forgot 
           text="Sudah punya akun?"
+          goto="/login"
           link1="Masuk"
           />
       </form>
