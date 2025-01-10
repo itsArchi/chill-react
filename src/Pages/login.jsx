@@ -1,7 +1,6 @@
 import Button from "../Components/Elements/Button/Button";
 import Logo from "../Components/Elements/Logo/Logo";
 import FormLogin from "../Components/Fragments/FormLogin";
-// import TitleWelcome from "../Components/Fragments/TitleWelcome";
 import WelcomeText from "../Components/Elements/WelcomeText/WelcomeText";
 
 const LoginPage = () => {

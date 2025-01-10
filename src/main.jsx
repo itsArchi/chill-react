@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import LoginPage from "./Pages/Login";
+import LoginPage from "./Pages/login";
 import RegisterPage from "./Pages/register";
 import ErrorPage from "./Pages/error";
 import TestPage from "./Pages/test";
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
   {
     path: "/main",
     element: <TestPage />,
-  },  
+  },
 ]);
 
 createRoot(document.getElementById("root")).render(
