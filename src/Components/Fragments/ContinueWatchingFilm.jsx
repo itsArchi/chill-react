@@ -3,7 +3,7 @@ import ContinueWatching from "../Elements/ContinueWatching/ContinueWatching";
 
 const ContinueWatchingFilm = () => {
   return (
-    <div className="relative flex w-full h-[162px] gap-6">
+    <div className="relative flex w-screen sm:w-full h-[151px] sm:h-[162px] px-11 sm:px-0 gap-4 sm:gap-2 overflow-x-scroll sm:overflow-visible">
       <ContinueWatching
         titleFilm="Don't Look Up"
         rating="4.5/5"

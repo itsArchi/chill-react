@@ -1,10 +1,22 @@
-const Logo = () => {
-    return (
-        <div className="flex justify-center items-center gap-3">
-            <img className="w-12 sm:h-11" src="/movie.png" alt="" />
-            <p className="font-londrina text-white text-[50px] leading-[55px] font-bold">CHILL</p>
-        </div>
-    )
-}
+/* eslint-disable react/prop-types */
+const Logo = (props) => {
+  const { text = "CHILL", textHide = false } = props;
+  return (
+    <div className="flex justify-center items-center gap-2 sm:gap-3">
+      <img
+        className="w-6 sm:w-12 h-5 sm:h-12"
+        src="/movie.png"
+        alt="Logo Movie"
+      />
+      <p
+        className={`${
+          textHide ? "hidden" : "block"
+        } sm:block font-londrina text-white text-2xl sm:text-[50px] leading-[55px] font-bold`}
+      >
+        {text}
+      </p>
+    </div>
+  );
+};
 
-export default Logo
+export default Logo;
