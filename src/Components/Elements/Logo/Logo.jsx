@@ -13,7 +13,7 @@ const Logo = (props) => {
           textHide ? "hidden" : "block"
         } sm:block font-londrina text-white text-2xl sm:text-[50px] leading-[55px] font-bold`}
       >
-        {text}
+        {text}  
       </p>
     </div>
   );

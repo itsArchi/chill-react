@@ -7,6 +7,7 @@ import RegisterPage from "./Pages/register";
 import ErrorPage from "./Pages/error";
 import TestPage from "./Pages/test";
 import Home from "./Pages/home";
+import MyListPage from "./Pages/myList";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/main",
     element: <TestPage />,
+  },
+  {
+    path: "/mylist",
+    element: <MyListPage />,
   },
 ]);
 
