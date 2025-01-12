@@ -1,4 +1,4 @@
-import Navbar from "../Components/Fragments/Navbar";
+  import Navbar from "../Components/Fragments/Navbar";
 import ComponentHero from "../Components/Fragments/ComponentHero";
 import ContinueWatchingFilmLayout from "../Components/Layout/ContinueWatchingFilmLayout";
 import TopRatingLayout from "../Components/Layout/TopRatingLayout";
@@ -9,7 +9,7 @@ import Footer from "../Components/Fragments/Footer";
 const Home = () => {
   return (
     <div className="bg-[#181A1C]">
-      <Navbar />
+      <Navbar hideLogoText={true}/>
       <ComponentHero />
       <ContinueWatchingFilmLayout />
       <TopRatingLayout />

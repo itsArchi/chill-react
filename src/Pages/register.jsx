@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../Components/Elements/Button/Button";
 import Logo from "../Components/Elements/Logo/Logo";
 import WelcomeText from "../Components/Elements/WelcomeText/WelcomeText";
@@ -12,14 +13,29 @@ const RegisterPage = () => {
         <WelcomeText title="Daftar" text="Selamat datang" />
         <FormRegister />
         <div className="flex flex-col items-center w-full gap-3 sm:gap-2">
-          <Button variant="bg-[#3D4142]"> Daftar </Button>
+          <Link
+            to="#"
+            className="flex flex-col items-center w-full gap-3 sm:gap-2"
+          >
+            <Button variant="bg-[#3D4142]"> Daftar </Button>
+          </Link>
+
           <p className="text-[#9D9EA1] text-sm font-medium leading-[19.6px] tracking-[0.2px]">
             Atau
           </p>
-          <Button variant="bg-transparent">
-            <img src="/google.png" alt="Google logo" className="h-5 w-5 mr-2" />
-            Daftar dengan Google
-          </Button>
+          <Link
+            to="#"
+            className="flex flex-col items-center w-full gap-3 sm:gap-2"
+          >
+            <Button variant="bg-transparent">
+              <img
+                src="/google.png"
+                alt="Google logo"
+                className="h-5 w-5 mr-2"
+              />
+              Daftar dengan Google
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

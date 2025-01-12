@@ -5,9 +5,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "./Pages/login";
 import RegisterPage from "./Pages/register";
 import ErrorPage from "./Pages/error";
-import TestPage from "./Pages/test";
 import Home from "./Pages/home";
 import MyListPage from "./Pages/myList";
+import SeriesPage from "./Pages/series";
 
 const router = createBrowserRouter([
   {
@@ -24,12 +24,12 @@ const router = createBrowserRouter([
     element: <RegisterPage />,
   },
   {
-    path: "/main",
-    element: <TestPage />,
-  },
-  {
     path: "/mylist",
     element: <MyListPage />,
+  },
+  {
+    path: "/series",
+    element: <SeriesPage />,
   },
 ]);
 

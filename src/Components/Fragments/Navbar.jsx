@@ -7,8 +7,8 @@ const Navbar = ({ hideLogoText = false }) => {
     return (
         <div className="w-full h-14 sm:h-24 flex justify-between items-center py-1.5 sm:py-6 px-5 sm:px-20 gap-3 text-white">
             <div className="flex justify-between items-center gap-3 sm:gap-20 text-white text-sm sm:text-lg font-medium leading-[25.2px] tracking-[0.2px]">
-                <Logo textHide={hideLogoText}/>
-                <Link to="/">Series</Link>
+                <Link to="/"><Logo textHide={hideLogoText}/></Link>
+                <Link to="/series">Series</Link>
                 <Link to="/">Film</Link>
                 <Link to="/mylist">Daftar Saya</Link>
             </div>

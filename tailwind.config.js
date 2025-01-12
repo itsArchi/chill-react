@@ -12,6 +12,7 @@ export default {
         "bg-login": "url('/bg-login.jpg')",
         "bg-register": "url('/bg-register.jpg')",
         "bg-main": "url('/bg-main.jpg')",
+        "bg-series": "url('/bg-series.png')",
       },
       colors: {
         grey: "#C1C2C4",
