@@ -9,7 +9,7 @@ const Navbar = ({ hideLogoText = false }) => {
             <div className="flex justify-between items-center gap-3 sm:gap-20 text-white text-sm sm:text-lg font-medium leading-[25.2px] tracking-[0.2px]">
                 <Link to="/"><Logo textHide={hideLogoText}/></Link>
                 <Link to="/series">Series</Link>
-                <Link to="/">Film</Link>
+                <Link to="/film">Film</Link>
                 <Link to="/mylist">Daftar Saya</Link>
             </div>
             <div className="flex items-center gap-2">

@@ -1,8 +1,11 @@
+import NewEpisode from "../TagFilm/NewEpisode";
+
 /* eslint-disable react/prop-types */
 const ContinueWatching = (props) => {
-  const { titleFilm, rating, image } = props;
+  const { titleFilm, rating, image, hideItemText = false } = props;
   return (
       <div className="relative min-w-[309px] sm:w-full h-full sm:h-[162px] gap-6 sm:gap-2.5">
+        <NewEpisode itemHide={hideItemText} />
         <img
           className="rounded-lg w-[309px] sm:w-[309px] h-full sm:h-[162px] object-cover"
           src={image}

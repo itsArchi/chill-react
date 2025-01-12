@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <div className="bg-[#181A1C]">
       <Navbar hideLogoText={true}/>
-      <ComponentHero />
+      <ComponentHero heroTitle="Duty After School" heroDesc="Sebuah benda tak dikenal mengambil alih dunia. Dalam keputusasaan, Departemen Pertahanan mulai merekrut lebih banyak tentara, termasuk siswa sekolah menengah. Mereka pun segera menjadi pejuang garis depan dalam perang." heroBg={"bg-main.png"}/>
       <ContinueWatchingFilmLayout />
       <TopRatingLayout />
       <TrendingLayout />

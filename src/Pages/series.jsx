@@ -1,7 +1,7 @@
-import ComponentHeroSeries from "../Components/Fragments/ComponentHeroSeries";
+import ComponentHero from "../Components/Fragments/ComponentHero";
 import Footer from "../Components/Fragments/Footer";
 import Navbar from "../Components/Fragments/Navbar";
-import ContinueWatchingFilmLayout from "../Components/Layout/ContinueWatchingFilmLayout";
+import ContinueWatchingSeriesLayout from "../Components/Layout/ContinueWatchingSeriesLayout";
 import NewReleaseLayout from "../Components/Layout/NewReleaseLayout";
 import SeriesOfferingLayout from "../Components/Layout/SeriesOfferingLayout";
 import TopRatingLayout from "../Components/Layout/TopRatingLayout";
@@ -10,8 +10,8 @@ import TrendingLayout from "../Components/Layout/TrendingLayout";
 const SeriesPage = () => {
   return <div className="bg-[#181A1C]">
     <Navbar hideLogoText={true}/>
-    <ComponentHeroSeries />
-    <ContinueWatchingFilmLayout />
+    <ComponentHero heroTitle="Happiness" heroDesc="Mengisahkan tentang kelompok orang yang berjuang untuk bertahan hidup di dalam sebuah gedung apartemen yang penuh dengan zombie. Sayangnya, virus zombie hanya terdapat di dalam area apartemen tersebut dan tidak menyebar ke luar kawasan apartemen." heroBg={"bg-series.png"} />
+    <ContinueWatchingSeriesLayout />
     <SeriesOfferingLayout />
     <TopRatingLayout />
     <TrendingLayout />

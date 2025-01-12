@@ -8,6 +8,7 @@ import ErrorPage from "./Pages/error";
 import Home from "./Pages/home";
 import MyListPage from "./Pages/myList";
 import SeriesPage from "./Pages/series";
+import FilmPage from "./Pages/film";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
     path: "/series",
     element: <SeriesPage />,
   },
+  {
+    path: "/film",
+    element: <FilmPage />,
+  }
 ]);
 
 createRoot(document.getElementById("root")).render(
