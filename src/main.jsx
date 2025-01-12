@@ -6,7 +6,7 @@ import LoginPage from "./Pages/login";
 import RegisterPage from "./Pages/register";
 import ErrorPage from "./Pages/error";
 import Home from "./Pages/home";
-import MyListPage from "./Pages/myList";
+import MyListPage from "./Pages/mylist";
 import SeriesPage from "./Pages/series";
 import FilmPage from "./Pages/film";
 
