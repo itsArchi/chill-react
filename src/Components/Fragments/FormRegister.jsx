@@ -13,6 +13,7 @@ const FormRegister = ({ onInputChange, formData, onSubmit }) => {
         name="username"
         value={formData.username}
         onChange={onInputChange}
+        required
       />
       <InputForm
         label="Kata Sandi"
@@ -22,6 +23,7 @@ const FormRegister = ({ onInputChange, formData, onSubmit }) => {
         img="/eye-off.png"
         value={formData.password}
         onChange={onInputChange}
+        required
       />
       <InputForm
         label="Konfirmasi Kata Sandi"
@@ -31,6 +33,7 @@ const FormRegister = ({ onInputChange, formData, onSubmit }) => {
         img="/eye-off.png"
         value={formData.confirmPassword}
         onChange={onInputChange}
+        required
       />
       <Forgot text="Sudah punya akun?" goto="/login" link1="Masuk" />
     </div>

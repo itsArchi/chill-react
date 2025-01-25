@@ -1,13 +1,16 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import Button from "../Components/Elements/Button/Button";
 import Logo from "../Components/Elements/Logo/Logo";
 import FormLogin from "../Components/Fragments/FormLogin";
 import WelcomeText from "../Components/Elements/WelcomeText/WelcomeText";
-import { Link, useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const navigate = useNavigate();
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -19,7 +22,7 @@ const LoginPage = () => {
     const { username, password } = formData;
 
     if (!username || !password) {
-      alert("Harap isi semua field!");
+      toast.error("Harap isi semua field!");
       return;
     }
 
@@ -29,21 +32,27 @@ const LoginPage = () => {
     );
 
     if (user) {
-      alert("Login Berhasil!");
+      toast.success("Login Berhasil!");
+      setIsLoading(true);
+
+      setTimeout(() => {
+        setIsLoading(false);
+        navigate("/home");
+      }, 2000);
       localStorage.setItem("isLoggedIn", true);
-      navigate("/");
     } else {
-      alert("Username atau password salah.");
+      toast.error("Username atau password salah.");
     }
   };
 
   return (
     <div className="relative flex justify-center items-center bg-bg-login bg-center bg-cover w-full h-screen">
+      <ToastContainer position="top-right" autoClose={5000} theme="colored" />
       <div className="absolute inset-0 bg-black opacity-30"></div>
       <div className="relative flex justify-center items-center flex-col w-[90%] sm:w-[80%] md:w-[70%] lg:w-[529px] h-auto md:h-[663px] bg-[#181A1CD6] rounded-2xl p-6 md:p-10 gap-4 sm:gap-6">
         <Logo />
         <WelcomeText title="Masuk" text="Selamat datang kembali" />
-        <form onSubmit={handleLogin} className="w-full">
+        <form onSubmit={handleLogin} className="w-full flex flex-col gap-8">
           <FormLogin formData={formData} onInputChange={handleInputChange} />
           <Button type="submit" variant="bg-[#3D4142]">
             Masuk
@@ -61,6 +70,7 @@ const LoginPage = () => {
             Masuk dengan Google
           </Button>
         </Link>
+        {isLoading ? null : <></>}
       </div>
     </div>
   );

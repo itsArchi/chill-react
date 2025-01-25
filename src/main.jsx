@@ -14,12 +14,16 @@ import UserProfile from "./Components/Fragments/UserProfile";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <LoginPage />,
     errorElement: <ErrorPage />,
   },
   {
     path: "/login",
     element: <LoginPage />,
+  },
+  {
+    path: "/home",
+    element: <Home />,
   },
   {
     path: "/register",
