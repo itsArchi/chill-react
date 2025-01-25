@@ -65,7 +65,7 @@ const LoginPage = () => {
           to="/"
           className="flex flex-col items-center w-full gap-3 sm:gap-2"
         >
-          <Button variant="bg-transparent">
+          <Button variant="bg-transparent" onClick={() => toast.warning("Fitur Belum Tersedia")}>
             <img src="/google.png" alt="Google logo" className="h-5 w-5 mr-2" />
             Masuk dengan Google
           </Button>
