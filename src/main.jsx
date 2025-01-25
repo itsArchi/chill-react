@@ -9,6 +9,7 @@ import Home from "./Pages/home";
 import MyListPage from "./Pages/mylist";
 import SeriesPage from "./Pages/series";
 import FilmPage from "./Pages/film";
+import UserProfile from "./Components/Fragments/UserProfile";
 
 const router = createBrowserRouter([
   {
@@ -35,7 +36,11 @@ const router = createBrowserRouter([
   {
     path: "/film",
     element: <FilmPage />,
-  }
+  },
+  {
+    path: "/test",
+    element: <UserProfile />,
+  },
 ]);
 
 createRoot(document.getElementById("root")).render(
