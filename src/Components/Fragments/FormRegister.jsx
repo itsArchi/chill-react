@@ -2,7 +2,7 @@
 import InputForm from "../Elements/Input/index";
 import Forgot from "../Elements/Input/Forgot";
 
-const FormRegister = ({ onInputChange, formData, onSubmit }) => {
+const FormRegister = ({ onInputChange, formData, onSubmit,showForgot = true }) => {
   return (
     <div className="w-full max-w-sm sm:max-w-md lg:max-w-lg mx-auto">
       <InputForm
@@ -35,7 +35,7 @@ const FormRegister = ({ onInputChange, formData, onSubmit }) => {
         onChange={onInputChange}
         required
       />
-      <Forgot text="Sudah punya akun?" goto="/login" link1="Masuk" />
+      {showForgot && <Forgot text="Sudah punya akun?" goto="/login" link1="Masuk"/>}
     </div>
   );
 };

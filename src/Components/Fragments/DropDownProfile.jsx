@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function DropdownWithArrow() {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +28,7 @@ function DropdownWithArrow() {
               onClick={() => setIsOpen(false)}
             >
               <img src="/profile.png" alt="Profile" className="w-3 sm:w-6 h-3 sm:h-6" />
-              <span>Profile Saya</span>
+              <Link to="/userprofile">Profile Saya</Link>
             </li>
             <li
               className="p-1 sm:p-2 hover:text-blue-600 cursor-pointer flex items-center gap-2"

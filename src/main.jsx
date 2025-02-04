@@ -9,7 +9,7 @@ import Home from "./Pages/home";
 import MyListPage from "./Pages/mylist";
 import SeriesPage from "./Pages/series";
 import FilmPage from "./Pages/film";
-import UserProfile from "./Components/Fragments/UserProfile";
+import UserProfile from "./Pages/UserProfile";
 
 const router = createBrowserRouter([
   {
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
     element: <FilmPage />,
   },
   {
-    path: "/test",
+    path: "/userprofile",
     element: <UserProfile />,
   },
 ]);
