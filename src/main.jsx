@@ -9,7 +9,7 @@ import Home from "./Pages/home";
 import MyListPage from "./Pages/mylist";
 import SeriesPage from "./Pages/series";
 import FilmPage from "./Pages/film";
-import UserProfile from "./Pages/UserProfile";
+import UserProfile from "./Pages/userProfile";
 
 const router = createBrowserRouter([
   {
