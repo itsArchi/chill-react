@@ -1,8 +1,10 @@
-# React + Vite
+# Chill Apps
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## How to use
+**git clone https://github.com/itsArchi/chill-react.git**
 
-Currently, two official plugins are available:
+## Install Depedencies 
+**npm i**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Run Apps
+**npm run dev**
