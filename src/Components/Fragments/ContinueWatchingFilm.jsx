@@ -54,7 +54,7 @@ const ContinueWatchingFilm = () => {
               <ContinueWatching
                 titleFilm={film.title}
                 rating={film.rating}
-                image={film.image}
+                image={film.image}  
                 hideItemText={true}
               />
             </div>
