@@ -4,7 +4,6 @@ import Arrow from "../Elements/ContinueWatching/Arrow";
 
 const TopRating = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-
   const itemsPerPage = 1;
 
   const films = [
