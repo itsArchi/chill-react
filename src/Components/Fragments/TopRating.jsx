@@ -45,9 +45,9 @@ const TopRating = () => {
 
   return (
     <div className="relative px-[45px] sm:px-0 flex overflow-x-scroll sm:overflow-visible sm:justify-center sm:gap-6 gap-4 snap-x snap-mandatory sm:snap-none w-screen sm:w-full min-h-[145px] sm:h-[365px]">
-      <div className="overflow-x-scroll sm:overflow-hidden border border-red-600 ">
+      <div className="overflow-x-scroll sm:overflow-hidden">
         <div
-          className="flex w-fit transition-transform duration-300 gap-4 sm:gap-[22px] border border-blue-600"
+          className="flex w-screen transition-transform duration-300 gap-4 sm:gap-[22px]"
           style={{
             transform: `translateX(-${
               ((currentIndex * 100) / films.length) * itemsPerPage
