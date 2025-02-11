@@ -65,6 +65,7 @@ const TopRating = () => {
         breakpoint: 500,
         settings: {
           slidesToShow: 3,
+          slidesToScroll: 3,
           arrows: false,
           infinite: true,
           swipeToSlide: true,

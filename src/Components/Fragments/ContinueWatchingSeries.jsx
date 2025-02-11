@@ -53,6 +53,7 @@ const ContinueWatcingSeries = () => {
         breakpoint: 500,
         settings: {
           slidesToShow: 1,
+          slidesToScroll: 1,
           arrows: false,
           infinite: true,
           swipeToSlide: true,
