@@ -7,7 +7,7 @@ import ContainerNewEpisode from "../Elements/Container/ContainerNewEpisode";
 import useFetchMovies from "../../hooks/useFetchMovies";
 
 const NewRelease = () => {
-  const { movies, loading, error } = useFetchMovies();
+  const { movies, loading, error } = useFetchMovies("new")
   const sliderRef = useRef(null);
 
   if (loading) return <p>Loading movies...</p>

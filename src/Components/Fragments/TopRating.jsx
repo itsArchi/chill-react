@@ -2,16 +2,16 @@ import { useRef } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import ContainerFilm from "../Elements/Container/ContainerFilm";
 import Arrow from "../Elements/Arrow/Arrow";
+import ContainerFilm from "../Elements/Container/ContainerFilm";
 import useFetchMovies from "../../hooks/useFetchMovies";
 
 const TopRating = () => {
-  const { movies, loading, error } = useFetchMovies()
+  const { movies, loading, error } = useFetchMovies("popular")
   const sliderRef = useRef(null);
 
-  if (loading) return <p>Loading movies...</p>
-  if (error) return <p>Error loading movies: {error.message}</p>
+  if (loading) return <p>Loading movies...</p>;
+  if (error) return <p>Error loading movies: {error.message}</p>;
 
   const settings = {
     dots: false,
@@ -66,9 +66,12 @@ const TopRating = () => {
         onScrollLeft={() => sliderRef.current.slickPrev()}
         onScrollRight={() => sliderRef.current.slickNext()}
       />
-      <Slider ref={sliderRef} {...settings} >
+      <Slider ref={sliderRef} {...settings}>
         {movies.map((movie) => (
-          <ContainerFilm key={movie.id} image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
+          <ContainerFilm
+            key={movie.id}
+            image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          />
         ))}
       </Slider>
     </div>

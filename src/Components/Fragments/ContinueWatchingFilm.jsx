@@ -1,13 +1,13 @@
 import { useRef } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import useFetchMovies from "../../hooks/useFetchMovies";
 import Slider from "react-slick";
 import Arrow from "../Elements/Arrow/Arrow";
 import ContinueWatching from "../Elements/ContinueWatching/ContinueWatching";
+import useFetchMovies from "../../hooks/useFetchMovies";
 
 const ContinueWatchingFilm = () => {
-  const { movies, loading, error } = useFetchMovies();
+  const { movies, loading, error } = useFetchMovies("watchingFilm");
   const sliderRef = useRef(null);
   
   if (loading) return <p>Loading movies...</p>;

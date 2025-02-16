@@ -7,11 +7,11 @@ import ContainerTopTen from "../Elements/Container/ContainerTopTen";
 import useFetchMovies from "../../hooks/useFetchMovies";
 
 const Trending = () => {
-  const { movies, loading, error } = useFetchMovies();
+  const { movies, loading, error } = useFetchMovies("trending")
   const sliderRef = useRef(null);
 
-  if (loading) return <p>Loading movies...</p>
-  if (error) return <p>Error loading movies: {error.message}</p>
+  if (loading) return <p>Loading movies...</p>;
+  if (error) return <p>Error loading movies: {error.message}</p>;
 
   const settings = {
     dots: false,
@@ -66,9 +66,12 @@ const Trending = () => {
         onScrollLeft={() => sliderRef.current.slickPrev()}
         onScrollRight={() => sliderRef.current.slickNext()}
       />
-      <Slider ref={sliderRef} {...settings} >
+      <Slider ref={sliderRef} {...settings}>
         {movies.map((movie) => (
-          <ContainerTopTen key={movie.id} image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
+          <ContainerTopTen
+            key={movie.id}
+            image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          />
         ))}
       </Slider>
     </div>

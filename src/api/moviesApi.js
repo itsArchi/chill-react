@@ -1,18 +1,61 @@
-import axios from "axios";
+import axiosInstance from "./axiosInstance";
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL
-const API_KEY = import.meta.env.VITE_API_KEY
+export const getMoviesWatchingFilm = async () => {
+  try {
+    const response = await axiosInstance.get("movie/now_playing");
+    return response.data.results || [];
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
 
-export const getMovies = async () => {
-    try {
-        const response = await axios.get(`${BASE_URL}discover/movie`, {
-            params: {
-                api_key: API_KEY 
-            }
-        })
-        return response.data
-    } catch (error) {
-        console.log(error)
-        return []
-    }
-}
+export const getMoviesPopular = async () => {
+  try {
+    const response = await axiosInstance.get("movie/popular");
+    return response.data.results || [];
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+export const getMoviesTrending = async () => {
+  try {
+    const response = await axiosInstance.get("movie/top_rated");
+    return response.data.results || [];
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+export const getMoviesNewRelease = async () => {
+  try {
+    const response = await axiosInstance.get("movie/upcoming");
+    return response.data.results || [];
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+export const getMoviesWatchingSeries = async () => {
+  try {
+    const response = await axiosInstance.get("tv/airing_today");
+    return response.data.results || [];
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+export const getMoviesOffering = async () => {
+  try {
+    const response = await axiosInstance.get("tv/popular");
+    return response.data.results || [];
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};

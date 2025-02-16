@@ -1,26 +1,48 @@
 import { useState, useEffect } from "react";
-import { getMovies } from "../api/moviesApi";
+import {
+  getMoviesPopular,
+  getMoviesTrending,
+  getMoviesNewRelease,
+  getMoviesWatchingFilm,
+  getMoviesWatchingSeries,
+  getMoviesOffering,
+} from "../api/moviesApi";
 
-const useFetchMovies = () => {
-    const [movies, setMovies] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
+const useFetchMovies = (category) => {
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    useEffect (() => {
-        const fetchMovies = async () => {
-            try {
-                const data = await getMovies()
-                setMovies(data.results || [])
-            } catch (error) {
-                setError(error)
-            } finally {
-                setLoading(false)
-            }
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        let data = [];
+        if (category === "watchingFilm") {
+          data = await getMoviesWatchingFilm();
+        } else if (category === "popular") {
+          data = await getMoviesPopular();
+        } else if (category === "trending") {
+          data = await getMoviesTrending();
+        } else if (category === "new") {
+          data = await getMoviesNewRelease();
+        } else if (category === "watchingSeries") {
+          data = await getMoviesWatchingSeries();
+        } else if (category === "offering") {
+          data = await getMoviesOffering();
         }
 
-        fetchMovies()
-    }, [])
-    return { movies, loading, error}
-}
+        setMovies(data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-export default useFetchMovies
+    fetchMovies();
+  }, [category]);
+
+  return { movies, loading, error };
+};
+
+export default useFetchMovies;
