@@ -2,7 +2,7 @@ import { useRef } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import Arrow from "../Elements/ContinueWatching/Arrow";
+import Arrow from "../Elements/Arrow/Arrow";
 import ContinueWatching from "../Elements/ContinueWatching/ContinueWatching";
 
 const ContinueWatcingSeries = () => {

@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useRef } from "react";
 import Slider from "react-slick";
 import ContainerPremium from "../Elements/Container/ContainerPremium";
-import Arrow from "../Elements/ContinueWatching/Arrow";
+import Arrow from "../Elements/Arrow/Arrow";
 
 const SeriesOffering = () => {
   const films = [

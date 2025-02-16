@@ -3,37 +3,15 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import ContainerFilm from "../Elements/Container/ContainerFilm";
-import Arrow from "../Elements/ContinueWatching/Arrow";
+import Arrow from "../Elements/Arrow/Arrow";
+import useFetchMovies from "../../hooks/useFetchMovies";
 
 const TopRating = () => {
-  const films = [
-    { image: "/assets/list-film/fastx.png" },
-    { image: "/assets/list-film/korea.png" },
-    { image: "/assets/list-film/blackadam.png" },
-    { image: "/assets/list-film/bokunohero.png" },
-    { image: "/assets/list-film/dontlookup.png" },
-    { image: "/assets/list-film/sonic.png" },
-    { image: "/assets/list-film/bighero.png" },
-    { image: "/assets/list-film/jurassic.png" },
-    { image: "/assets/list-film/allofus.png" },
-    { image: "/assets/list-film/alice.png" },
-    { image: "/assets/list-film/allofus.png" },
-    { image: "/assets/list-film/batman.png" },
-    { image: "/assets/list-film/baymax.png" },
-    { image: "/assets/list-film/devilalltime.png" },
-    { image: "/assets/list-film/dilan.png" },
-    { image: "/assets/list-film/doctorstrange.png" },
-    { image: "/assets/list-film/suzume.png" },
-    { image: "/assets/list-film/duty.png" },
-    { image: "/assets/list-film/guardian.png" },
-    { image: "/assets/list-film/happiness.png" },
-    { image: "/assets/list-film/quantum.png" },
-    { image: "/assets/list-film/bluelock.png" },
-    { image: "/assets/list-film/spiderman.png" },
-    { image: "/assets/list-film/tedlasso.png" },
-  ];
-
+  const { movies, loading, error } = useFetchMovies()
   const sliderRef = useRef(null);
+
+  if (loading) return <p>Loading movies...</p>
+  if (error) return <p>Error loading movies: {error.message}</p>
 
   const settings = {
     dots: false,
@@ -89,8 +67,8 @@ const TopRating = () => {
         onScrollRight={() => sliderRef.current.slickNext()}
       />
       <Slider ref={sliderRef} {...settings} >
-        {films.map((film, index) => (
-          <ContainerFilm key={index} image={film.image} />
+        {movies.map((movie) => (
+          <ContainerFilm key={movie.id} image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
         ))}
       </Slider>
     </div>
