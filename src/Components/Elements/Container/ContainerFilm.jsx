@@ -1,13 +1,23 @@
-/* eslint-disable react/prop-types */
+import { useState } from "react";
 
-const ContainerFilm = (props) => {
-  const { image } = props;
+const ContainerFilm = ({ movie, onClick }) => {
+  const [isDragging, setIsDragging] = useState(false);
+
   return (
-    <div className="relative min-w-[95px] sm:w-[234px] h-[145px] sm:h-[365px]">
+    <div
+      onMouseDown={() => setIsDragging(false)}
+      onMouseMove={() => setIsDragging(true)}
+      onClickCapture={() => {
+        if (!isDragging) {
+          onClick();
+        }
+      }}
+      className="cursor-pointer transform transition-transform duration-300 hover:scale-110"
+    >
       <img
-        className="rounded-lg w-24 sm:w-[234px] h-full sm:h-[365px]"
-        src={image}
-        alt=""
+        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+        alt={movie.title}
+        className="rounded-lg"
       />
     </div>
   );

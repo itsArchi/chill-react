@@ -1,12 +1,27 @@
-/* eslint-disable react/prop-types */ 
+/* eslint-disable react/prop-types */
+import { useState } from "react";
 import TopTen from "../TagFilm/TopTen";
-const ContainerTopTen = (props) => {
-  const { image } = props;
+const ContainerTopTen = ({ movie, onClick }) => {
+  const [isDragging, setIsDragging] = useState(false);
+
   return (
-      <div className="relative min-w-[95px] sm:w-[234px] h-[145px] sm:h-[365px]">
-        <img className="rounded-lg w-24 sm:w-[234px] h-full sm:h-[365px]" src={image} alt="" />
-        <TopTen />
-      </div>
+    <div
+      onMouseDown={() => setIsDragging(false)}
+      onMouseMove={() => setIsDragging(true)}
+      onClickCapture={() => {
+        if (!isDragging) {
+          onClick();
+        }
+      }}
+      className="cursor-pointer transform transition-transform duration-300 hover:scale-110"
+    >
+      <img
+        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+        alt={movie.title}
+        className="rounded-lg"
+      />
+      <TopTen />
+    </div>
   );
 };
 

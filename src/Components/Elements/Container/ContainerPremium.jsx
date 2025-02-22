@@ -1,14 +1,29 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
 import Premium from "../TagFilm/Premium";
 
-const ContainerPremium = (props) => {
-    const { image } = props;
-    return (
-        <div className="relative min-w-[95px] sm:w-[234px] h-[145px] sm:h-[365px]">
-            <img className="rounded-lg w-24 sm:w-[234px] h-full sm:h-[365px]" src={image} alt="" />
-            <Premium />
-        </div>
-    )
-}
+const ContainerPremium = ({ movie, onClick }) => {
+  const [isDragging, setIsDragging] = useState(false);
 
-export default ContainerPremium
+  return (
+    <div
+      onMouseDown={() => setIsDragging(false)}
+      onMouseMove={() => setIsDragging(true)}
+      onClickCapture={() => {
+        if (!isDragging) {
+          onClick();
+        }
+      }}
+      className="cursor-pointer transform transition-transform duration-300 hover:scale-110"
+    >
+      <img
+        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+        alt={movie.title}
+        className="rounded-lg"
+      />
+      <Premium />
+    </div>
+  );
+};
+
+export default ContainerPremium;

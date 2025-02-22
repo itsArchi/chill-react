@@ -1,4 +1,4 @@
-  import Navbar from "../Components/Fragments/Navbar";
+import Navbar from "../Components/Fragments/Navbar";
 import ComponentHero from "../Components/Fragments/ComponentHero";
 import ContinueWatchingFilmLayout from "../Components/Layout/ContinueWatchingFilmLayout";
 import TopRatingLayout from "../Components/Layout/TopRatingLayout";
@@ -8,9 +8,13 @@ import Footer from "../Components/Fragments/Footer";
 
 const Home = () => {
   return (
-    <div className="bg-[#181A1C]">
-      <Navbar hideLogoText={true}/>
-      <ComponentHero heroTitle="Duty After School" heroDesc="Sebuah benda tak dikenal mengambil alih dunia. Dalam keputusasaan, Departemen Pertahanan mulai merekrut lebih banyak tentara, termasuk siswa sekolah menengah. Mereka pun segera menjadi pejuang garis depan dalam perang." heroBg={"bg-main.png"}/>
+    <div className="bg-[#181A1C] flex flex-col gap-12">
+      <Navbar hideLogoText={true} />
+      <ComponentHero
+        heroTitle="Duty After School"
+        heroDesc="Sebuah benda tak dikenal mengambil alih dunia. Dalam keputusasaan, Departemen Pertahanan mulai merekrut lebih banyak tentara, termasuk siswa sekolah menengah. Mereka pun segera menjadi pejuang garis depan dalam perang."
+        heroBg={"bg-main.png"}
+      />
       <ContinueWatchingFilmLayout />
       <TopRatingLayout />
       <TrendingLayout />
