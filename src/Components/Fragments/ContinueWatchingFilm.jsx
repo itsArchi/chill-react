@@ -44,18 +44,6 @@ const ContinueWatchingFilm = () => {
         onScrollLeft={() => sliderRef.current.slickPrev()}
         onScrollRight={() => sliderRef.current.slickNext()}
       />
-      {/* <Slider ref={sliderRef} {...settings} >
-        {movies.map((movie) => (
-          <ContinueWatching
-          key={movie.id}
-          titleFilm={movie.title}
-          rating={movie.vote_average}
-          image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}  
-          hideItemText={true}
-        />
-        ))}
-      </Slider> */}
-
       <Slider ref={sliderRef} {...settings}>
         {movies.map((movie) => (
           <div
