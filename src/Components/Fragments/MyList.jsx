@@ -9,26 +9,26 @@ const MyList = () => {
       <HeadingTitle title="Daftar Saya" />
       <div className=" flex flex-col sm:flex-row justify-center items-center w-full h-full gap-4">
         <div className="w-full h-full flex flex-row gap-6 sm:gap-4 justify-center items-center">
-          <ContainerNewEpisode image="/assets/list-film/allofus.png" />
-          <ContainerFilm image="/assets/list-film/baymax.png" />
-          <ContainerNewEpisode image="/assets/list-film/bokunohero.png" />
+          <ContainerNewEpisode movie={{poster_path:"/allofus.png", title:"All of Us" }}/>
+          <ContainerFilm movie={{ poster_path: "/baymax.png", title: "Baymax" }} />
+          <ContainerNewEpisode movie={{ poster_path:"/bokunohero.png", title:"Boku No Hero"}} />
         </div>
         <div className="w-full h-full flex flex-row gap-6 sm:gap-4 justify-center items-center">
-          <ContainerNewEpisode image="/assets/list-film/bluelock.png" />
-          <ContainerNewEpisode image="/assets/list-film/tedlasso.png" />
-          <ContainerNewEpisode image="/assets/list-film/duty.png" />
+          <ContainerNewEpisode movie={{ poster_path: "/bluelock.png", title:"Blue Lock"}} />
+          <ContainerNewEpisode movie={{ poster_path: "/tedlasso.png", title:"Ted Lasso"}} />
+          <ContainerNewEpisode movie={{ poster_path: "/duty.png", title:"Duty"}} />
         </div>
       </div>
       <div className="flex flex-col sm:flex-row justify-center items-center w-full h-full gap-4">
         <div className="w-full h-full flex flex-row gap-6 sm:gap-4 justify-center items-center">
-          <ContainerTopTen image="/assets/list-film/suzume.png" />
-          <ContainerTopTen image="/assets/list-film/guardian.png" />
-          <ContainerFilm image="/assets/list-film/spiderman.png" />
+          <ContainerTopTen movie={{ poster_path: "/suzume.png", title: "Suzume" }} />
+          <ContainerTopTen movie={{ poster_path: "/guardian.png", title: "Guardian" }} />
+          <ContainerFilm movie={{ poster_path: "/spiderman.png", title: "Spiderman" }} />
         </div>
         <div className="w-full h-full flex flex-row gap-6 sm:gap-4 justify-center items-center">
-          <ContainerFilm image="/assets/list-film/sonic.png" />
-          <ContainerFilm image="/assets/list-film/megan.png" />
-          <ContainerFilm image="/assets/list-film/dilan.png" />
+          <ContainerFilm movie={{ poster_path: "/sonic.png", title: "Sonic" }} />
+          <ContainerFilm movie={{ poster_path: "/megan.png", title: "Megan" }} />
+          <ContainerFilm movie={{ poster_path: "/dilan.png", title: "Dilan" }} />
         </div>
       </div>
     </div>

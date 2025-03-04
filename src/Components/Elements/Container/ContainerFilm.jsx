@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 
-const ContainerFilm = ({ movie, onClick }) => {
+const ContainerFilm = ({ movie, image, onClick }) => {
   const [isDragging, setIsDragging] = useState(false);
+  const posterPath = movie ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : image;
+  const title = movie?.title || "Unknown Title";
 
   return (
     <div
@@ -15,13 +17,10 @@ const ContainerFilm = ({ movie, onClick }) => {
       }}
       className="cursor-pointer transform transition-transform duration-300 hover:scale-110"
     >
-      <img
-        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-        alt={movie.title}
-        className="rounded-lg"
-      />
+      <img src={posterPath} alt={title} className="rounded-lg" />
     </div>
   );
 };
+
 
 export default ContainerFilm;
