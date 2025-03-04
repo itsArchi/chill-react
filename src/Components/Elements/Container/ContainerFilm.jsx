@@ -7,7 +7,7 @@ const ContainerFilm = ({ movie, onClick }) => {
   return (
     <div
       onMouseDown={() => setIsDragging(false)}
-      onMouseMove={() => setIsDragging(true)}
+      onDragStart={() => setIsDragging(true)}
       onClickCapture={() => {
         if (!isDragging) {
           onClick();

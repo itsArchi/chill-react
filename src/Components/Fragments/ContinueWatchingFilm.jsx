@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -6,10 +6,12 @@ import Arrow from "../Elements/Arrow/Arrow";
 import MovieDetailModal from "../Elements/Container/MovieDetailModal";
 import ContinueWatching from "../Elements/ContinueWatching/ContinueWatching";
 import useFetchMovies from "../../hooks/useFetchMovies";
+import useMovieStore from "../../store/useMovieStore";
 
 const ContinueWatchingFilm = () => {
   const { movies, loading, error } = useFetchMovies("watchingFilm");
-  const [selectedMovie, setSelectedMovie] = useState(null);
+  const { selectedMovie, setSelectedMovie, clearSelectedMovie } =
+    useMovieStore();
   const sliderRef = useRef(null);
 
   if (loading) return <p>Loading movies...</p>;
@@ -39,12 +41,17 @@ const ContinueWatchingFilm = () => {
   };
 
   return (
-    <div className="relative w-[309px] sm:w-full h-full">
+    <div className="relative w-[309px] sm:w-full h-full group">
       <Arrow
-        onScrollLeft={() => sliderRef.current.slickPrev()}
-        onScrollRight={() => sliderRef.current.slickNext()}
+        onScrollLeft={() => sliderRef.current?.slickPrev()}
+        onScrollRight={() => sliderRef.current?.slickNext()}
+        className="absolute top-1/2 -translate-y-1/2 left-2 right-2 z-10 pointer-events-auto"
       />
-      <Slider ref={sliderRef} {...settings}>
+      <Slider
+        ref={sliderRef}
+        {...settings}
+        className="relative z-0 group-hover:z-20"
+      >
         {movies.map((movie) => (
           <div
             key={movie.id}
@@ -60,10 +67,7 @@ const ContinueWatchingFilm = () => {
       </Slider>
 
       {selectedMovie && (
-        <MovieDetailModal
-          movie={selectedMovie}
-          onClose={() => setSelectedMovie(null)}
-        />
+        <MovieDetailModal movie={selectedMovie} onClose={clearSelectedMovie} />
       )}
     </div>
   );
