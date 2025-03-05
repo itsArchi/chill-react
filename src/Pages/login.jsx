@@ -1,47 +1,61 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import useAuthStore from "../store/useAuthStore";
+import api from "../api/axiosConfig";
 import Button from "../Components/Elements/Button/Button";
 import Logo from "../Components/Elements/Logo/Logo";
 import FormLogin from "../Components/Fragments/FormLogin";
 import WelcomeText from "../Components/Elements/WelcomeText/WelcomeText";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
-  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [formData, setFormData] = useState({ username: "" });
   const navigate = useNavigate();
-
+  const login = useAuthStore((state) => state.login);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    const { username, password } = formData;
+    const { username } = formData;
 
-    if (!username || !password) {
-      toast.error("Harap isi semua field!");
+    if (!username) {
+      toast.error("Harap isi username!");
       return;
     }
 
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const user = users.find(
-      (u) => u.username === username && u.password === password
-    );
-
-    if (user) {
-      toast.success("Login Berhasil!");
+    try { 
       setIsLoading(true);
+      const response = await api.get("/users");
+      const users = response.data;
 
-      setTimeout(() => {
+      const user = users.find((u) => u.username === username);
+
+      if (user) {
+        toast.success("Login Berhasil");
+
+        login(user);
+
+        setTimeout(() => {
+          setIsLoading(false);
+          navigate("/home");
+        }, 2000);
+      } else {
+        toast.error("Username tidak ditemukan");
         setIsLoading(false);
-        navigate("/home");
-      }, 2000);
-      localStorage.setItem("isLoggedIn", true);
-    } else {
-      toast.error("Username atau password salah.");
+      }
+    } catch (error) {
+      console.error("Error fetching users:", error);
+      toast.error("Terjadi kesalahan, coba lagi nanti.");
+      setIsLoading(false);
     }
   };
 
@@ -55,7 +69,7 @@ const LoginPage = () => {
         <form onSubmit={handleLogin} className="w-full flex flex-col gap-8">
           <FormLogin formData={formData} onInputChange={handleInputChange} />
           <Button type="submit" variant="bg-[#3D4142]">
-            Masuk
+            {isLoading ? "Loading..." : "Masuk"}
           </Button>
         </form>
         <p className="text-[#9D9EA1] text-sm font-medium leading-[19.6px] tracking-[0.2px]">
@@ -70,7 +84,6 @@ const LoginPage = () => {
             Masuk dengan Google
           </Button>
         </Link>
-        {isLoading ? null : <></>}
       </div>
     </div>
   );

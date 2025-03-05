@@ -5,6 +5,7 @@ import Button from "../Components/Elements/Button/Button";
 import Logo from "../Components/Elements/Logo/Logo";
 import WelcomeText from "../Components/Elements/WelcomeText/WelcomeText";
 import FormRegister from "../Components/Fragments/FormRegister";
+import api from "../api/axiosConfig"; 
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -24,42 +25,57 @@ const RegisterPage = () => {
     }));
   };
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     const { username, password, confirmPassword } = formData;
-
+  
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,}$/;
+  
     if (!username || !password || !confirmPassword) {
       toast.error("Harap isi semua field!");
       return;
     }
-
+  
     if (password !== confirmPassword) {
       toast.error("Kata sandi tidak cocok!");
       return;
     }
-
-    const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
-    const isUsernameTaken = existingUsers.some(
-      (user) => user.username === username
-    );
-
-    if (isUsernameTaken) {
-      toast.error("Username sudah terdaftar. Gunakan username lain.");
+  
+    if (!passwordRegex.test(password)) {
+      toast.error("Password harus memiliki minimal 8 karakter, 1 huruf kapital, 1 angka, dan 1 simbol!");
       return;
     }
-
-    const newUser = { username, password };
-    const updatedUsers = [...existingUsers, newUser];
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
-
-    toast.success("Pendaftaran berhasil!");
-    setIsLoading(true);
-    setFormData({ username: "", password: "", confirmPassword: "" });
-
-    setTimeout(() => {
+  
+    try {
+      setIsLoading(true);
+  
+      const response = await api.get("/users");
+      const existingUsers = response.data;
+      const isUsernameTaken = existingUsers.some((user) => user.username === username);
+  
+      if (isUsernameTaken) {
+        toast.error("Username sudah terdaftar. Gunakan username lain.");
+        setIsLoading(false);
+        return;
+      }
+  
+      await api.post("/users", {
+        username,
+        password, 
+      });
+  
+      toast.success("Pendaftaran berhasil!");
+      setFormData({ username: "", password: "", confirmPassword: "" });
+  
+      setTimeout(() => {
+        setIsLoading(false);
+        navigate("/login");
+      }, 2000);
+    } catch (error) {
+      console.error("Error registering user:", error);
+      toast.error("Terjadi kesalahan saat mendaftar. Coba lagi nanti.");
       setIsLoading(false);
-      navigate("/login");
-    }, 2000);
+    }
   };
 
   return (
@@ -72,7 +88,7 @@ const RegisterPage = () => {
         <form onSubmit={handleRegister} className="w-full flex flex-col gap-8">
           <FormRegister onInputChange={handleInputChange} formData={formData} />
           <Button type="submit" variant="bg-[#3D4142]">
-            Daftar
+            {isLoading ? "Loading..." : "Daftar"}
           </Button>
         </form>
         <p className="text-[#9D9EA1] text-sm font-medium leading-[19.6px] tracking-[0.2px]">
@@ -87,7 +103,6 @@ const RegisterPage = () => {
             Daftar dengan Google
           </Button>
         </Link>
-        {isLoading ? null : <></>}
       </div>
     </div>
   );
