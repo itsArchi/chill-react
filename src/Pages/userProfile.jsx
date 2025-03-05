@@ -5,6 +5,7 @@ import Button from "../Components/Elements/Button/Button";
 import Logo from "../Components/Elements/Logo/Logo";
 import WelcomeText from "../Components/Elements/WelcomeText/WelcomeText";
 import FormRegister from "../Components/Fragments/FormRegister";
+import api from "../api/axiosConfig";
 
 const UserProfile = () => {
   const [formData, setFormData] = useState({
@@ -24,43 +25,54 @@ const UserProfile = () => {
     }));
   };
 
-  const handleUpdatePassword = (e) => {
+  const handleUpdatePassword = async (e) => {
     e.preventDefault();
     const { username, password, confirmPassword } = formData;
-
+  
     if (!username || !password || !confirmPassword) {
       toast.error("Harap isi semua field!");
       return;
     }
-
+  
     if (password !== confirmPassword) {
       toast.error("Kata sandi tidak cocok!");
       return;
     }
-
-    const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
-    const userIndex = existingUsers.findIndex(
-      (user) => user.username === username
-    );
-
-    if (userIndex === -1) {
-      toast.error("Username Tidak ditemukan");
-      return;
-    }
-
-    existingUsers[userIndex].password = password;
-    localStorage.setItem("users", JSON.stringify(existingUsers));
-
-    toast.success("Kata Sandi Berhasil diubah!");
+  
     setIsLoading(true);
-    setFormData({ username: "", password: "", confirmPassword: "" });
-
-    setTimeout(() => {
+  
+    try {
+      const { data: users } = await api.get("/users");
+      const user = users.find((u) => u.username === username);
+  
+      if (!user) {
+        toast.error("User tidak ditemukan!");
+        setIsLoading(false);
+        return;
+      }
+  
+      await api.delete(`/users/${user.id}`);
+  
+      await api.post("/users", {
+        username: user.username,
+        password: password,
+        email: user.email, 
+      });
+  
+      toast.success("Kata sandi berhasil diperbarui!");
+      setFormData({ username: "", password: "", confirmPassword: "" });
+  
+      setTimeout(() => {
+        setIsLoading(false);
+        navigate("/login");
+      }, 2000);
+    } catch (error) {
+      console.error("Update password error:", error);
+      toast.error("Gagal memperbarui kata sandi");
       setIsLoading(false);
-      navigate("/login");
-    }, 2000);
+    }
   };
-
+  
   return (
     <div className="relative flex justify-center items-center bg-bg-register bg-center bg-cover w-full h-screen">
       <ToastContainer position="top-right" autoClose={5000} theme="colored" />
