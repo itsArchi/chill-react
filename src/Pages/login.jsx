@@ -7,15 +7,56 @@ import Button from "../Components/Elements/Button/Button";
 import Logo from "../Components/Elements/Logo/Logo";
 import WelcomeText from "../Components/Elements/WelcomeText/WelcomeText";
 import FormLogin from "../Components/Fragments/FormLogin";
+import api from "../api/axiosConfig";
 
 const LoginPage = () => {
-  const [formData, setFormData] = useState({ username: "" });
+  const [formData, setFormData] = useState({ username: "", password: "" });
   const navigate = useNavigate();
   const login = useAuthStore((state) => state.login);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (e) => {
-    setFormData({ ...formData, username: e.target.value });
+    const { name, value } = e.target; 
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value, 
+    }));
+  };
+  
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const { username } = formData;
+
+    if (!username) {
+      toast.error("Harap isi username!");
+      return;
+    }
+
+    try { 
+      setIsLoading(true);
+      const response = await api.get("/users");
+      const users = response.data;
+
+      const user = users.find((u) => u.username === username);
+
+      if (user) {
+        toast.success("Login Berhasil");
+
+        login(user);
+
+        setTimeout(() => {
+          setIsLoading(false);
+          navigate("/home");
+        }, 2000);
+      } else {
+        toast.error("Username tidak ditemukan");
+        setIsLoading(false);
+      }
+    } catch (error) {
+      console.error("Error fetching users:", error);
+      toast.error("Terjadi kesalahan, coba lagi nanti.");
+      setIsLoading(false);
+    }
   };
 
   const handleGoogleSignIn = async () => {
@@ -47,7 +88,7 @@ const LoginPage = () => {
       <div className="relative flex justify-center items-center flex-col w-[90%] sm:w-[80%] md:w-[70%] lg:w-[529px] h-auto md:h-[663px] bg-[#181A1CD6] rounded-2xl p-6 md:p-10 gap-4 sm:gap-6">
         <Logo />
         <WelcomeText title="Masuk" text="Selamat datang kembali" />
-        <form className="w-full flex flex-col gap-8">
+        <form className="w-full flex flex-col gap-8" onSubmit={handleLogin} >
           <FormLogin formData={formData} onInputChange={handleInputChange} />
           <Button type="submit" variant="bg-[#3D4142]">
             {isLoading ? "Loading..." : "Masuk"}
