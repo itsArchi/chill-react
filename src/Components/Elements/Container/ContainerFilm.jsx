@@ -17,7 +17,7 @@ const ContainerFilm = ({ movie, image, onClick }) => {
       }}
       className="cursor-pointer transform transition-transform duration-300 hover:scale-110"
     >
-      <img src={posterPath} alt={title} className="rounded-lg" />
+      <img src={posterPath} alt={title} className="rounded-lg w-full min-h-[145px] sm:h-[365px]" />
     </div>
   );
 };
