@@ -8,3 +8,6 @@
 
 ## Run Apps
 **npm run dev**
+
+
+**Create Account First**
